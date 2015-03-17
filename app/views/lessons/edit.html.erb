@@ -1,18 +1,6 @@
-<h1>Edit lesson</h1>
+<h1>Edit <%= @lesson.title %></h1>
 
-<% if @lesson.errors.any? %>
-  <h3>Please fix these errors:</h3>
-  <ul>
-    <% @lesson.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
 
-<%= form_for @lesson do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :body %>
-  <%= f.text_field :body %>
-  <%= f.submit %>
-<% end %>
+<%= render 'form' %>
+
+<%= link_to "back", lessons_path %>

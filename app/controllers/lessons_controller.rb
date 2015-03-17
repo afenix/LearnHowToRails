@@ -21,7 +21,7 @@ class LessonsController < ApplicationController
   end
 
   def edit
-    @list = List.find(params[:id])
+    @lesson = Lesson.find(params[:id])
   end
 
   def update
@@ -31,5 +31,12 @@ class LessonsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @lesson = Lesson.find(params[:id])
+    @lesson.destroy
+    flash[:notice] = "Lesson destruction successfully deployed."
+    redirect_to lessons_path
   end
 end
