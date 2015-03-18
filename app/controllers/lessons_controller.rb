@@ -12,9 +12,11 @@ class LessonsController < ApplicationController
   end
 
   def create
-    @lesson = Lesson.new(params[:lesson])
+    @lesson = Lesson.new(lesson_params)
+    @lesson.number = @lessons.length + 1
     if @lesson.save
-      redirect_to lessons_path
+      flash[:notice] = "Lesson successfully added!"
+      redirect_to lessons_path(@lesson)
     else
       render :new
     end
@@ -26,7 +28,7 @@ class LessonsController < ApplicationController
 
   def update
     @lesson = Lesson.find(params[:id])
-    if @lesson.update(params[:lesson])
+    if @lesson.update(lesson_params)
       redirect_to lessons_path
     else
       render :edit
@@ -39,4 +41,10 @@ class LessonsController < ApplicationController
     flash[:notice] = "Lesson destruction successfully deployed."
     redirect_to lessons_path
   end
+
+  private
+    def lesson_params
+      params.require(:lesson).permit(:name, :content)
+    end
+
 end
