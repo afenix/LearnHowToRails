@@ -6,7 +6,7 @@ class Lesson < ActiveRecord::Base
     Lesson.find_by number: number + 1
   end
 
-  def previous
+  def prev
     Lesson.find_by number: number - 1
   end
 

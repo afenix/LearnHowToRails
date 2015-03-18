@@ -11,4 +11,9 @@
                           :method => "delete"}%></p>
 
 
-<p><%= link_to "Return to Lessons", lessons_path %></p>
+<p><% if @lesson.prev %></p>
+  <%= link_to "<= Previous", lesson_path(@lesson.prev) %>
+<% end %>
+<p><% if @lesson.next %></p>
+  <%= link_to "Next =>", lesson_path(@lesson.next) %>
+<% end %>
