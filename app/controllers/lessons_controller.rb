@@ -13,7 +13,7 @@ class LessonsController < ApplicationController
 
   def create
     @lesson = Lesson.new(lesson_params)
-    @lesson.number = @lessons.length + 1
+    @lesson.number = Lesson.count + 1
     if @lesson.save
       flash[:notice] = "Lesson successfully added!"
       redirect_to lessons_path(@lesson)
@@ -44,7 +44,7 @@ class LessonsController < ApplicationController
 
   private
     def lesson_params
-      params.require(:lesson).permit(:name, :content)
+      params.require(:lesson).permit(:title, :body)
     end
 
 end

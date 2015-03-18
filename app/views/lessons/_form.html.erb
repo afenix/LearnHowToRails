@@ -1,9 +1,7 @@
 <%= render "layouts/errors", :object => @lesson %>
 
-<%= form_for @lesson do |f| %>
-  <%= f.label :title %>
+<%= bootstap_form_for(@lesson) do |f|%>
   <%= f.text_field :title %>
-  <%= f.label :body %>
-  <%= f.text_field :body %>
-  <%= f.submit %>
+  <%= f.text_area :body, rows: 15 %>
+  <%= f.submit class: 'btn btn-primary'%>
 <% end %>
