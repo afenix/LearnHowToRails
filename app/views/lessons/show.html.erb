@@ -17,3 +17,6 @@
 <p><% if @lesson.next %></p>
   <%= link_to "Next =>", lesson_path(@lesson.next) %>
 <% end %>
+<br />
+<br />
+<%= link_to "View all lessons", lessons_path %>
